@@ -21,8 +21,9 @@ sed -i "s|DB_PORT_3306_TCP_PORT|${DB_PORT_3306_TCP_PORT}|g" params.properties
 if [ -n "$WAIT_MYSQL" ]; then
 	while ! curl http://$DB_PORT_3306_TCP_ADDR:$DB_PORT_3306_TCP_PORT/
 	do
+	  echo "http://$DB_PORT_3306_TCP_ADDR:$DB_PORT_3306_TCP_PORT/"
 	  echo "$(date) - still trying to connect to mysql"
-	  sleep 1
+	  sleep 10
 	done
 fi
 
